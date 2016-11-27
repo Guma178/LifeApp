@@ -70,11 +70,29 @@ namespace LifeApp
 
         private void BeginLife_Click(object sender, EventArgs e)
         {
+            bool allDead;
             BeginLife.Dispose();
             label1.Dispose();
             while (true)
             {
+                allDead = true;
                 worldLifeTic(worldsCreatures);
+
+                foreach (Herbivore h in worldsCreatures.herbivores)
+                    if (h.Alive)
+                    { allDead = false; break;}
+                       
+                foreach (Carnivore c in worldsCreatures.carnivores)
+                    if (c.Alive || !allDead)
+                    { allDead = false; break; }
+                if (allDead)
+                {
+                    MessageBox.Show("Все животные умерли.");
+                    worldLifeTic(worldsCreatures);
+                    break;
+                }
+
+
             }
         }
     }
