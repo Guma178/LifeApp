@@ -236,11 +236,11 @@ namespace LifeApp
                                 targetHerbivore = p;
                             }
                     }
-                    if (GetDistanceToWildlifeObject(targetHerbivore) < 30 && targetHerbivore != null)
+                    if (targetHerbivore != null && GetDistanceToWildlifeObject(targetHerbivore) < 30)
                     {
                         targetHerbivore.Alive = false; Fullness += targetHerbivore.NutritionalValue;
                     }
-                    else if (GetDistanceToWildlifeObject(targetHerbivore) < 280 && targetHerbivore != null)
+                    else if (targetHerbivore != null && GetDistanceToWildlifeObject(targetHerbivore) < 280)
                     {
 
                         double attribute = ((double)Math.Abs(targetHerbivore.Position.X - Position.X)) / (((double)Math.Abs(targetHerbivore.Position.Y - Position.Y)) + ((double)Math.Abs(targetHerbivore.Position.X - Position.X)));
